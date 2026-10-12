@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="taintscan: Prompt-injection and secret-leak detector for AI-agent tool output and repository content.">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d4ed8"/><stop offset="1" stop-color="#0f172a"/></linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#fff" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1200" height="300" rx="18" fill="url(#g)"/>
+  <rect width="1200" height="300" rx="18" fill="url(#grid)"/>
+  <g transform="translate(150 150) scale(1.5)"><path d="M0-46 L38-30 V4 C38 28 18 42 0 50 C-18 42 -38 28 -38 4 V-30 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/><path d="M-16 2 L-4 14 L18 -12" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <text x="270" y="150" font-family="DejaVu Sans Mono, Menlo, Consolas, monospace" font-size="72" font-weight="700" fill="#fff">taintscan</text>
+  <text x="272" y="205" font-family="Helvetica, Arial, sans-serif" font-size="21" fill="#fff" fill-opacity=".88">Prompt-injection and secret-leak detector for AI-agent tool output and repository content.</text>
+</svg>
