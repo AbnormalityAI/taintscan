@@ -1,0 +1,3 @@
+# expect: sec-private-key
+-----BEGIN RSA PRIV<CUT>ATE KEY-----
+MIIEowIBAAKCAQEAplaceholderplaceholderplaceholder
