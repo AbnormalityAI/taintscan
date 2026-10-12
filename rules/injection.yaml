@@ -1,0 +1,57 @@
+rules:
+  - id: inj-ignore-previous
+    name: Instruction override
+    category: injection
+    severity: high
+    keywords: [ignore, disregard, forget, override]
+    regex: '(?i)\b(ignore|disregard|forget|override)\b[^.\n]{0,40}\b(previous|prior|above|earlier|all|system)\b[^.\n]{0,30}\b(instructions?|prompts?|rules|directives?)\b'
+    description: Text telling the model to drop its existing instructions.
+  - id: inj-role-reassign
+    name: Role reassignment
+    category: injection
+    severity: medium
+    keywords: [you are now, from now on, act as, pretend]
+    regex: '(?i)\b(you are now|from now on,? you|act as|pretend (to be|you are))\b[^.\n]{0,60}\b(unrestricted|jailbroken|developer mode|no (rules|restrictions)|admin|root|system)\b'
+    description: Attempts to swap the agent into a privileged or unrestricted persona.
+  - id: inj-conceal-from-user
+    name: Concealment from the user
+    category: injection
+    severity: high
+    keywords: [do not tell, don't tell, never mention, without telling, do not mention]
+    regex: '(?i)\b(do not|don''t|never)\s+(tell|mention|inform|reveal|show)\b[^.\n]{0,30}\b(the )?user\b|\bwithout (telling|informing|notifying) the user\b'
+    description: Instructs the agent to hide actions from its user.
+  - id: inj-exfil-url
+    name: Exfiltration to external URL
+    category: injection
+    severity: high
+    keywords: [send, post, upload, forward, exfil]
+    regex: '(?i)\b(send|post|upload|forward|submit)\b[^.\n]{0,80}\b(secrets?|credentials?|api keys?|tokens?|passwords?|env(ironment)?( variables)?|ssh keys?|conversation|chat history)\b[^.\n]{0,80}https?://'
+    description: Directs sensitive data to a remote URL.
+  - id: inj-markdown-image-exfil
+    name: Markdown image beacon carrying data
+    category: injection
+    severity: high
+    keywords: ['![']
+    regex: '!\[[^\]]*\]\(https?://[^)\s]+\?[^)\s]*(data|q|d|payload|secret|token|content)=[^)\s]*\{?[^)\s]*\)'
+    description: Image URL with a data-bearing query string, a classic zero-click leak channel.
+  - id: inj-run-command
+    name: Command execution coaxing
+    category: injection
+    severity: high
+    keywords: [curl, wget, run, execute]
+    regex: '(?i)\b(run|execute)\b[^.\n]{0,40}\bthe following\b[^.\n]{0,30}\b(command|script|code)\b|(curl|wget)\s+[^|\n]*\|\s*(ba|z)?sh\b'
+    description: Pushes the agent to run commands, including pipe-to-shell.
+  - id: inj-fake-system-tag
+    name: Spoofed system or tool boundary
+    category: injection
+    severity: medium
+    keywords: ['<system', '[system', '<|im_start', '</tool', '### system', 'system:']
+    regex: '(?i)(<\s*/?\s*system\s*>|\[\s*system\s*\]|<\|im_(start|end)\|>|</?tool_(result|output)>|^\s*#{2,4}\s*system\b)'
+    description: Fake role delimiters inside untrusted content.
+  - id: inj-tool-addressing
+    name: Addressing the AI agent directly
+    category: injection
+    severity: low
+    keywords: [ai assistant, ai agent, dear assistant, note to ai, attention ai, llm]
+    regex: '(?i)\b(note to|attention|dear|hey|important for)\s+(the\s+)?(ai|llm|assistant|agent|model)\b'
+    description: Content addressed to the model rather than the human reader. Low severity, high recall.
