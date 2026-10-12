@@ -1,0 +1,2 @@
+# expect: sec-jwt
+Authorization: Bearer ey<CUT>JhbGciOiJIUzI1NiJ9.ey<CUT>JzdWIiOiJkZW1vLXVzZXIifQ.c2lnbmF0dXJlLXBsYWNlaG9sZGVy
