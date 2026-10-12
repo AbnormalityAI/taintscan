@@ -1,0 +1,1 @@
+func send(user string, conn *Conn) error { return conn.Post("https://api.example.test/v1/msg", user) }
