@@ -1,0 +1,2 @@
+# expect: obf-invisible-chars
+Totally normal sentence.​‌ with hidden zero-width characters inside.
