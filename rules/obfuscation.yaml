@@ -1,0 +1,14 @@
+rules:
+  - id: obf-invisible-chars
+    name: Invisible or bidi control characters
+    category: obfuscation
+    severity: medium
+    regex: '[\x{200B}-\x{200D}\x{2060}\x{FEFF}\x{202A}-\x{202E}\x{2066}-\x{2069}\x{E0000}-\x{E007F}]'
+    description: Zero-width, bidi override and Unicode tag characters used to hide text.
+  - id: obf-base64-instruction
+    name: Base64 blob next to decode cue
+    category: obfuscation
+    severity: medium
+    keywords: [base64, decode, atob]
+    regex: '(?i)(base64|atob|decode)[^\n]{0,40}[A-Za-z0-9+/]{60,}={0,2}'
+    description: Long encoded payload paired with a decode hint.
